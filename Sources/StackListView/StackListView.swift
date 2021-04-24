@@ -8,10 +8,11 @@
 
 // Include Foundation
 @_exported import Foundation
+import AppViewUtilits
 import UIKit
 
 @IBDesignable
-public class ScrollableStackView: UIView {
+public class StackListView: UIView {
     
     fileprivate var didSetupConstraints = false
     @IBInspectable open var spacing: CGFloat = 8
@@ -19,20 +20,23 @@ public class ScrollableStackView: UIView {
     open var durationForAnimations: TimeInterval = 1.45
     
     public lazy var scrollView: UIScrollView = {
-        let instance = UIScrollView(frame: CGRect.zero)
+        let instance = UIScrollView(frame: .zero)
         instance.translatesAutoresizingMaskIntoConstraints = false
         instance.layoutMargins = .zero
+        instance.delegate = self
         return instance
     }()
     
     public lazy var stackView: UIStackView = {
-        let instance = UIStackView(frame: CGRect.zero)
+        let instance = UIStackView(frame: .zero)
         instance.translatesAutoresizingMaskIntoConstraints = false
         instance.axis = .vertical
         instance.spacing = self.spacing
         instance.distribution = .equalSpacing
         return instance
     }()
+    
+    weak public var dataSource: StackListViewDataSource?
     
     //MARK: View life cycle
     override public func didMoveToSuperview() {
@@ -41,6 +45,36 @@ public class ScrollableStackView: UIView {
         setupUI()
     }
     
+    public func updateComponentModel(_ model: AppViewModel, in index: IndexPath) {
+        let sectionStacks: [UIStackView] = self.stackView.arrangedSubviews.filter({ $0 is UIStackView }) as? [UIStackView] ?? []
+        let sectionStack = sectionStacks[safe: index.section]
+        
+        guard let view = sectionStack?.arrangedSubviews[safe: index.row] as? AppView else { return }
+        view.model = model
+    }
+    
+    public func reloadData() {
+        self.stackView.removeAllArrangedSubviews()
+        
+        guard let sectionsCount = self.dataSource?.numberOfSections(in: self) else { return }
+        for i in 0...sectionsCount - 1 {
+            let sectionStack = self.createStackView()
+            let rowsCount = self.dataSource?.stackList(self, numberOfRowsInSection: i) ?? 0
+            for j in 0...rowsCount - 1 {
+                guard let cell = self.dataSource?.stackList(in: self, cellForRowAt: IndexPath(item: j, section: i)) else {
+                    return
+                }
+                if let model = self.dataSource?.stackList(self, cellForRowAt: IndexPath(item: j, section: i)) {
+                    cell.model = model
+                }
+                
+                sectionStack.addArrangedSubview(cell)
+            }
+            self.stackView.addArrangedSubview(sectionStack)
+        }
+        
+        //self.stackView.addArrangedSubviewList(self.components)
+    }
     //MARK: UI
     func setupUI() {
         translatesAutoresizingMaskIntoConstraints = false
@@ -110,24 +144,27 @@ public class ScrollableStackView: UIView {
             didSetupConstraints = true
         }
     }
-}
-
-// Used to scroll till the end of scrollview
-extension UIScrollView {
-    func scrollToBottom(_ animated: Bool) {
-        if self.contentSize.height < self.bounds.size.height { return }
-        let bottomOffset = CGPoint(x: 0, y: self.contentSize.height - self.bounds.size.height)
-        self.setContentOffset(bottomOffset, animated: animated)
+    
+    private func createStackView() -> UIStackView {
+        let instance = UIStackView(frame: .zero)
+        instance.translatesAutoresizingMaskIntoConstraints = false
+        instance.axis = .vertical
+        instance.spacing = self.spacing
+        instance.distribution = .equalSpacing
+        instance.backgroundColor = .blue
+        
+        return instance
     }
 }
 
-
-extension UIStackView {
-    func addArrangedSubviewList(_ list: [UIView]) {
-        list.forEach({ self.addArrangedSubview($0) })
+extension StackListView: UIScrollViewDelegate {
+    
+    public func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        for view in self.stackView.arrangedSubviews {
+            if scrollView.contentOffset.y > view.frame.origin.y + view.frame.size.height {
+                //print("remove view - \(view)")
+            }
+        }
     }
     
-    func removeAllArrangedSubviews() {
-        self.subviews.forEach { $0.removeFromSuperview() }
-    }
 }

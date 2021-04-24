@@ -25,6 +25,17 @@
 		3D9C433522746323000A6585 /* StackListView.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3D9C429022745894000A6585 /* StackListView.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		956BBEFC2633F3C9008AC0A6 /* AppViewUtilits in Frameworks */ = {isa = PBXBuildFile; productRef = 956BBEFB2633F3C9008AC0A6 /* AppViewUtilits */; };
 		956BBF0D2633F3F5008AC0A6 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 956BBF0C2633F3F5008AC0A6 /* ViewController.xib */; };
+		956BBF262633F597008AC0A6 /* StackListViewProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956BBF162633F4F7008AC0A6 /* StackListViewProtocols.swift */; };
+		956BBF272633F598008AC0A6 /* StackListViewProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956BBF162633F4F7008AC0A6 /* StackListViewProtocols.swift */; };
+		956BBF282633F598008AC0A6 /* StackListViewProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956BBF162633F4F7008AC0A6 /* StackListViewProtocols.swift */; };
+		956BBF302633F599008AC0A6 /* StackListViewProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956BBF162633F4F7008AC0A6 /* StackListViewProtocols.swift */; };
+		956BBF652633F891008AC0A6 /* FieldViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956BBF642633F891008AC0A6 /* FieldViewModel.swift */; };
+		956BBF6E2633F894008AC0A6 /* FieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956BBF6D2633F894008AC0A6 /* FieldView.swift */; };
+		956BBF772633F897008AC0A6 /* FieldView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 956BBF762633F897008AC0A6 /* FieldView.xib */; };
+		956BBF812633FC8B008AC0A6 /* StackSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956BBF802633FC8B008AC0A6 /* StackSectionModel.swift */; };
+		956BBF902633FC8E008AC0A6 /* StackSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956BBF802633FC8B008AC0A6 /* StackSectionModel.swift */; };
+		956BBF982633FC8F008AC0A6 /* StackSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956BBF802633FC8B008AC0A6 /* StackSectionModel.swift */; };
+		956BBFA02633FC8F008AC0A6 /* StackSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956BBF802633FC8B008AC0A6 /* StackSectionModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -100,6 +111,11 @@
 		3D9C432D2274629C000A6585 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3D9C432F2274629C000A6585 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		956BBF0C2633F3F5008AC0A6 /* ViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ViewController.xib; sourceTree = "<group>"; };
+		956BBF162633F4F7008AC0A6 /* StackListViewProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackListViewProtocols.swift; sourceTree = "<group>"; };
+		956BBF642633F891008AC0A6 /* FieldViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldViewModel.swift; sourceTree = "<group>"; };
+		956BBF6D2633F894008AC0A6 /* FieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldView.swift; sourceTree = "<group>"; };
+		956BBF762633F897008AC0A6 /* FieldView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FieldView.xib; sourceTree = "<group>"; };
+		956BBF802633FC8B008AC0A6 /* StackSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackSectionModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -230,6 +246,7 @@
 		3D9C43222274629B000A6585 /* Example */ = {
 			isa = PBXGroup;
 			children = (
+				956BBF382633F7B6008AC0A6 /* Views */,
 				3D9C43232274629B000A6585 /* AppDelegate.swift */,
 				3D9C43252274629B000A6585 /* ViewController.swift */,
 				956BBF0C2633F3F5008AC0A6 /* ViewController.xib */,
@@ -251,9 +268,45 @@
 		956BBF042633F3D2008AC0A6 /* StackListView */ = {
 			isa = PBXGroup;
 			children = (
+				956BBF7F2633FC69008AC0A6 /* Models */,
+				956BBF152633F4E9008AC0A6 /* Protocols */,
 				3D9C42A122745900000A6585 /* StackListView.swift */,
 			);
 			path = StackListView;
+			sourceTree = "<group>";
+		};
+		956BBF152633F4E9008AC0A6 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				956BBF162633F4F7008AC0A6 /* StackListViewProtocols.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		956BBF382633F7B6008AC0A6 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				956BBF632633F889008AC0A6 /* FieldView */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		956BBF632633F889008AC0A6 /* FieldView */ = {
+			isa = PBXGroup;
+			children = (
+				956BBF642633F891008AC0A6 /* FieldViewModel.swift */,
+				956BBF6D2633F894008AC0A6 /* FieldView.swift */,
+				956BBF762633F897008AC0A6 /* FieldView.xib */,
+			);
+			path = FieldView;
+			sourceTree = "<group>";
+		};
+		956BBF7F2633FC69008AC0A6 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				956BBF802633FC8B008AC0A6 /* StackSectionModel.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -562,6 +615,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3D9C432E2274629C000A6585 /* LaunchScreen.storyboard in Resources */,
+				956BBF772633F897008AC0A6 /* FieldView.xib in Resources */,
 				956BBF0D2633F3F5008AC0A6 /* ViewController.xib in Resources */,
 				3D9C432B2274629C000A6585 /* Assets.xcassets in Resources */,
 			);
@@ -650,6 +704,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				3D9C42A222745900000A6585 /* StackListView.swift in Sources */,
+				956BBF302633F599008AC0A6 /* StackListViewProtocols.swift in Sources */,
+				956BBF812633FC8B008AC0A6 /* StackSectionModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -658,6 +714,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				3D9C42B1227459C1000A6585 /* StackListView.swift in Sources */,
+				956BBF282633F598008AC0A6 /* StackListViewProtocols.swift in Sources */,
+				956BBF902633FC8E008AC0A6 /* StackSectionModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -666,6 +724,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				3D9C42BF227459F6000A6585 /* StackListView.swift in Sources */,
+				956BBF272633F598008AC0A6 /* StackListViewProtocols.swift in Sources */,
+				956BBF982633FC8F008AC0A6 /* StackSectionModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -674,6 +734,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				3D9C42CD22745A28000A6585 /* StackListView.swift in Sources */,
+				956BBF262633F597008AC0A6 /* StackListViewProtocols.swift in Sources */,
+				956BBFA02633FC8F008AC0A6 /* StackSectionModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -706,7 +768,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				3D9C43262274629B000A6585 /* ViewController.swift in Sources */,
+				956BBF6E2633F894008AC0A6 /* FieldView.swift in Sources */,
 				3D9C43242274629B000A6585 /* AppDelegate.swift in Sources */,
+				956BBF652633F891008AC0A6 /* FieldViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
