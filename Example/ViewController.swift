@@ -7,37 +7,22 @@
 //
 
 import UIKit
+import AppViewUtilits
 import StackListView
 
 // MARK: - ViewController
 
 /// The ViewController
-class ViewController: UIViewController {
-
+class ViewController: AppViewController {
+    
     // MARK: Properties
     
-    /// The Label
-    lazy var label: UILabel = {
-        let label = UILabel()
-        label.text = "🚀\nStackListView\nExample"
-        label.font = .systemFont(ofSize: 25, weight: .semibold)
-        label.numberOfLines = 0
-        label.lineBreakMode = .byWordWrapping
-        label.textAlignment = .center
-        return label
-    }()
-    
-    // MARK: View-Lifecycle
-    
-    /// View did load
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.view.backgroundColor = .white
+    public class var fromXib: ViewController {
+        ViewController(nibName: "ViewController", bundle: nil)
     }
     
-    /// LoadView
-    override func loadView() {
-        self.view = self.label
+    override func reloadData() {
+        self.view.backgroundColor = .blue
     }
-
+    
 }

@@ -5,10 +5,7 @@ import PackageDescription
 let package = Package(
     name: "StackListView",
     platforms: [
-        .iOS(.v9),
-        .tvOS(.v9),
-        .watchOS(.v2),
-        .macOS(.v10_10)
+        .iOS(.v11)
     ],
     products: [
         .library(
@@ -16,11 +13,15 @@ let package = Package(
             targets: ["StackListView"]
         ),
     ],
-    dependencies: [],
+    dependencies: [
+        .package(url: "https://github.com/moslienko/AppViewUtilits.git", from: "1.2.1")
+    ],
     targets: [
         .target(
             name: "StackListView",
-            dependencies: [],
+            dependencies: [
+                .package(url: "https://github.com/moslienko/AppViewUtilits.git", from: "1.2.1")
+            ],
             path: "Sources"
         ),
         .testTarget(
