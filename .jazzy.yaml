@@ -1,0 +1,7 @@
+# StackListView document generator jazzy settings
+
+copyright: Copyright 2021 moslienko
+author: Moslienko Pavel
+xcodebuild_arguments: [-target, StackListView-iOS]
+clean: true
+output: ./Documentation
