@@ -16,8 +16,8 @@ import StackListView
 class ViewController: AppViewController {
     
     // MARK: Properties
-    var sections: [StackSectionModel] = []
-    
+    var stackContainer = StackListAdapter<StackSectionModel>(models: [])
+
     lazy var contentView: StackListView = {
         let contentView = StackListView()
         contentView.stackView.alignment = .fill
@@ -25,9 +25,7 @@ class ViewController: AppViewController {
         contentView.stackView.axis = .vertical
         contentView.spacing = 16.0
         contentView.isCenterAligment = false
-        
-        contentView.dataSource = self
-        
+                
         contentView.stackView.layoutMargins = UIEdgeInsets(top: 16.0, left: 24.0, bottom: 16.0, right: 24.0)
         contentView.stackView.isLayoutMarginsRelativeArrangement = true
         contentView.scrollView.showsHorizontalScrollIndicator = false
@@ -48,49 +46,34 @@ class ViewController: AppViewController {
     }
     
     private func makeSections() {
+        var sections: [StackSectionModel] = []
+        
         for i in 0...2 {
+            let section = StackSectionModel()
             var rows: [AppViewModel] = []
             for j in 0...4 {
                 let model = FieldViewModel(value: "\(i) - \(j) = Hello!")
                 DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
                     if j % 3 == 0, i == 1 {
                         model.value = "^_^ \(j)"
-                        if let modelPresentable = model as? AppViewModelPresentable, let indexPath = self.sections.getIndexPatch(for: modelPresentable) {
-                            self.contentView.updateComponentModel(model, in: indexPath)
+                        self.stackContainer.updateModel(model, in: self.contentView)
+                        //self.contentView.updateModel(model)
+                        self.contentView.reloadData()
+                        
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                            self.stackContainer.removeModel(model, in: self.contentView)
                         }
-                        //self.contentView.reloadData()
                     }
                 }
                 rows += [model]
             }
-            let section = StackSectionModel()
             section.rows += rows
-            
-            self.sections.append(section)
+            sections.append(section)
         }
-        print("sections - \(self.sections)")
         
+        self.stackContainer = StackListAdapter<StackSectionModel>(models: sections)
+        self.contentView.dataSource = self.stackContainer
         self.contentView.reloadData()
     }
     
-}
-
-// MARK: - StackListViewDataSource
-extension ViewController: StackListViewDataSource {
-    
-    func stackList(_ view: StackListView, numberOfRowsInSection: Int) -> Int {
-        return self.sections[numberOfRowsInSection].rows.count
-    }
-    
-    func numberOfSections(in view: StackListView) -> Int {
-        return self.sections.count
-    }
-    
-    func stackList(in view: StackListView, cellForRowAt indexPath: IndexPath) -> AppView {
-        return (self.sections[indexPath.section].rows[indexPath.row] as? AppViewModelPresentable)?.view ?? AppView()
-    }
-    
-    func stackList(_ view: StackListView, cellForRowAt indexPath: IndexPath) -> AppViewModel {
-        return self.sections[indexPath.section].rows[indexPath.row]
-    }
 }

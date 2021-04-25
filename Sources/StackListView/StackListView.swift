@@ -45,17 +45,9 @@ public class StackListView: UIView {
         setupUI()
     }
     
-    public func updateComponentModel(_ model: AppViewModel, in index: IndexPath) {
-        let sectionStacks: [UIStackView] = self.stackView.arrangedSubviews.filter({ $0 is UIStackView }) as? [UIStackView] ?? []
-        let sectionStack = sectionStacks[safe: index.section]
-        
-        guard let view = sectionStack?.arrangedSubviews[safe: index.row] as? AppView else { return }
-        view.model = model
-    }
-    
     public func reloadData() {
         self.stackView.removeAllArrangedSubviews()
-        
+
         guard let sectionsCount = self.dataSource?.numberOfSections(in: self) else { return }
         for i in 0...sectionsCount - 1 {
             let sectionStack = self.createStackView()
@@ -75,8 +67,35 @@ public class StackListView: UIView {
         
         //self.stackView.addArrangedSubviewList(self.components)
     }
+    
+    //MARK: Update model
+    @discardableResult
+    public func updateModel(_ model: AppViewModel) -> Bool {
+        if let modelPresentable = model as? AppViewModelPresentable, let indexPath = (self.dataSource as? StackListAdapter)?.models.getIndexPatch(for: modelPresentable) {
+            self.updateComponentModel(model, in: indexPath)
+            return true
+        }
+        return false
+    }
+    
+    public func updateComponentModel(_ model: AppViewModel, in index: IndexPath) {
+        let sectionStacks: [UIStackView] = self.stackView.arrangedSubviews.filter({ $0 is UIStackView }) as? [UIStackView] ?? []
+        let sectionStack = sectionStacks[safe: index.section]
+        
+        guard let view = sectionStack?.arrangedSubviews[safe: index.row] as? AppView else { return }
+        view.model = model
+    }
+    
+    public func removeComponentModel( in index: IndexPath) {
+        let sectionStacks: [UIStackView] = self.stackView.arrangedSubviews.filter({ $0 is UIStackView }) as? [UIStackView] ?? []
+        let sectionStack = sectionStacks[safe: index.section]
+        
+        guard let view = sectionStack?.arrangedSubviews[safe: index.row] as? AppView else { return }
+        view.removeFromSuperview()
+    }
+    
     //MARK: UI
-    func setupUI() {
+    private func setupUI() {
         translatesAutoresizingMaskIntoConstraints = false
         clipsToBounds = true
         
@@ -110,7 +129,7 @@ public class StackListView: UIView {
     public func scrollToTop() {
         if stackView.arrangedSubviews.count > 0 {
             UIView.animate(withDuration: durationForAnimations, animations: {
-                self.scrollView.setContentOffset(CGPoint(x: 0, y:0), animated: true)
+                self.scrollView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
             })
         }
     }

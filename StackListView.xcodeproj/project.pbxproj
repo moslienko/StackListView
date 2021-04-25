@@ -23,6 +23,10 @@
 		3D9C432E2274629C000A6585 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D9C432C2274629C000A6585 /* LaunchScreen.storyboard */; };
 		3D9C433422746323000A6585 /* StackListView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D9C429022745894000A6585 /* StackListView.framework */; };
 		3D9C433522746323000A6585 /* StackListView.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3D9C429022745894000A6585 /* StackListView.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		9528E72E26350D4F00852232 /* StackListAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9528E72D26350D4F00852232 /* StackListAdapter.swift */; };
+		9528E72F26350D4F00852232 /* StackListAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9528E72D26350D4F00852232 /* StackListAdapter.swift */; };
+		9528E73026350D4F00852232 /* StackListAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9528E72D26350D4F00852232 /* StackListAdapter.swift */; };
+		9528E73126350D4F00852232 /* StackListAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9528E72D26350D4F00852232 /* StackListAdapter.swift */; };
 		956BBEFC2633F3C9008AC0A6 /* AppViewUtilits in Frameworks */ = {isa = PBXBuildFile; productRef = 956BBEFB2633F3C9008AC0A6 /* AppViewUtilits */; };
 		956BBF0D2633F3F5008AC0A6 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 956BBF0C2633F3F5008AC0A6 /* ViewController.xib */; };
 		956BBF262633F597008AC0A6 /* StackListViewProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956BBF162633F4F7008AC0A6 /* StackListViewProtocols.swift */; };
@@ -110,6 +114,7 @@
 		3D9C432A2274629C000A6585 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3D9C432D2274629C000A6585 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3D9C432F2274629C000A6585 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9528E72D26350D4F00852232 /* StackListAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackListAdapter.swift; sourceTree = "<group>"; };
 		956BBF0C2633F3F5008AC0A6 /* ViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ViewController.xib; sourceTree = "<group>"; };
 		956BBF162633F4F7008AC0A6 /* StackListViewProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackListViewProtocols.swift; sourceTree = "<group>"; };
 		956BBF642633F891008AC0A6 /* FieldViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldViewModel.swift; sourceTree = "<group>"; };
@@ -271,6 +276,7 @@
 				956BBF7F2633FC69008AC0A6 /* Models */,
 				956BBF152633F4E9008AC0A6 /* Protocols */,
 				3D9C42A122745900000A6585 /* StackListView.swift */,
+				9528E72D26350D4F00852232 /* StackListAdapter.swift */,
 			);
 			path = StackListView;
 			sourceTree = "<group>";
@@ -703,6 +709,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9528E72E26350D4F00852232 /* StackListAdapter.swift in Sources */,
 				3D9C42A222745900000A6585 /* StackListView.swift in Sources */,
 				956BBF302633F599008AC0A6 /* StackListViewProtocols.swift in Sources */,
 				956BBF812633FC8B008AC0A6 /* StackSectionModel.swift in Sources */,
@@ -713,6 +720,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9528E72F26350D4F00852232 /* StackListAdapter.swift in Sources */,
 				3D9C42B1227459C1000A6585 /* StackListView.swift in Sources */,
 				956BBF282633F598008AC0A6 /* StackListViewProtocols.swift in Sources */,
 				956BBF902633FC8E008AC0A6 /* StackSectionModel.swift in Sources */,
@@ -723,6 +731,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9528E73026350D4F00852232 /* StackListAdapter.swift in Sources */,
 				3D9C42BF227459F6000A6585 /* StackListView.swift in Sources */,
 				956BBF272633F598008AC0A6 /* StackListViewProtocols.swift in Sources */,
 				956BBF982633FC8F008AC0A6 /* StackSectionModel.swift in Sources */,
@@ -733,6 +742,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9528E73126350D4F00852232 /* StackListAdapter.swift in Sources */,
 				3D9C42CD22745A28000A6585 /* StackListView.swift in Sources */,
 				956BBF262633F597008AC0A6 /* StackListViewProtocols.swift in Sources */,
 				956BBFA02633FC8F008AC0A6 /* StackSectionModel.swift in Sources */,
