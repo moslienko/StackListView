@@ -21,8 +21,6 @@ public final class StackListAdapter<T: StackSectionModel>: StackSectionModel {
         guard let indexPath = self.getIndexPatch(for: model) else {
             return false
         }
-        print("updateModel - \(indexPath)")
-
         stackView.updateComponentModel(model, in: indexPath)
         return true
     }

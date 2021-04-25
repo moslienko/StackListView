@@ -99,15 +99,17 @@ public class StackListView: UIView {
         let sectionStacks: [UIStackView] = self.stackView.arrangedSubviews.filter({ $0 is UIStackView }) as? [UIStackView] ?? []
         let sectionStack = sectionStacks[safe: index.section]
         
-        guard let view = sectionStack?.arrangedSubviews[safe: index.row] as? AppView else { return }
+        let indexOffset = self.dataSource?.stackList(self, viewForHeaderInSection: index.section) == nil ? 0 : 1
+        guard let view = sectionStack?.arrangedSubviews[safe: index.row + indexOffset] as? AppView else { return }
         view.model = model
     }
     
-    public func removeComponentModel( in index: IndexPath) {
+    public func removeComponentModel(in index: IndexPath) {
         let sectionStacks: [UIStackView] = self.stackView.arrangedSubviews.filter({ $0 is UIStackView }) as? [UIStackView] ?? []
         let sectionStack = sectionStacks[safe: index.section]
         
-        guard let view = sectionStack?.arrangedSubviews[safe: index.row] as? AppView else { return }
+        let indexOffset = self.dataSource?.stackList(self, viewForHeaderInSection: index.section) == nil ? 0 : 1
+        guard let view = sectionStack?.arrangedSubviews[safe: index.row + indexOffset] as? AppView else { return }
         view.removeFromSuperview()
     }
     
