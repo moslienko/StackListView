@@ -47,10 +47,20 @@ public class StackListView: UIView {
     
     public func reloadData() {
         self.stackView.removeAllArrangedSubviews()
-
+        
         guard let sectionsCount = self.dataSource?.numberOfSections(in: self) else { return }
         for i in 0...sectionsCount - 1 {
             let sectionStack = self.createStackView()
+            
+            // Header
+            if let headerView = self.dataSource?.stackList(self, viewForHeaderInSection: i) {
+                if let headerModel = self.dataSource?.stackList(in: self, modelForHeaderInSection: i) {
+                    headerView.model = headerModel
+                }
+                sectionStack.addArrangedSubview(headerView)
+            }
+            
+            // Rows
             let rowsCount = self.dataSource?.stackList(self, numberOfRowsInSection: i) ?? 0
             for j in 0...rowsCount - 1 {
                 guard let cell = self.dataSource?.stackList(in: self, cellForRowAt: IndexPath(item: j, section: i)) else {
@@ -62,10 +72,17 @@ public class StackListView: UIView {
                 
                 sectionStack.addArrangedSubview(cell)
             }
+            
+            // Footer
+            if let footerView = self.dataSource?.stackList(self, viewForFooterInSection: i) {
+                if let footerModel = self.dataSource?.stackList(in: self, modelForFooterInSection: i) {
+                    footerView.model = footerModel
+                }
+                sectionStack.addArrangedSubview(footerView)
+            }
+            
             self.stackView.addArrangedSubview(sectionStack)
         }
-        
-        //self.stackView.addArrangedSubviewList(self.components)
     }
     
     //MARK: Update model
@@ -170,7 +187,7 @@ public class StackListView: UIView {
         instance.axis = .vertical
         instance.spacing = self.spacing
         instance.distribution = .equalSpacing
-        instance.backgroundColor = .blue
+        instance.backgroundColor = .clear
         
         return instance
     }

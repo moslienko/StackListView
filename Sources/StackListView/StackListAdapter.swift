@@ -21,6 +21,7 @@ public final class StackListAdapter<T: StackSectionModel>: StackSectionModel {
         guard let indexPath = self.getIndexPatch(for: model) else {
             return false
         }
+        print("updateModel - \(indexPath)")
 
         stackView.updateComponentModel(model, in: indexPath)
         return true
@@ -61,5 +62,21 @@ extension StackListAdapter: StackListViewDataSource {
     
     public func stackList(_ view: StackListView, cellForRowAt indexPath: IndexPath) -> AppViewModel {
         return self.models[indexPath.section].rows[indexPath.row]
+    }
+    
+    public func stackList(_ view: StackListView, viewForHeaderInSection section: Int) -> AppView? {
+        return (self.models[section].header as? AppViewModelPresentable)?.presentable.view
+    }
+    
+    public func stackList(_ view: StackListView, viewForFooterInSection section: Int) -> AppView? {
+        return (self.models[section].footer as? AppViewModelPresentable)?.presentable.view
+    }
+    
+    public func stackList(in view: StackListView, modelForHeaderInSection section: Int) -> AppViewModel? {
+        return self.models[section].header
+    }
+    
+    public func stackList(in view: StackListView, modelForFooterInSection section: Int) -> AppViewModel? {
+        return self.models[section].footer
     }
 }

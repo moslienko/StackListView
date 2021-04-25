@@ -27,6 +27,12 @@
 		9528E72F26350D4F00852232 /* StackListAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9528E72D26350D4F00852232 /* StackListAdapter.swift */; };
 		9528E73026350D4F00852232 /* StackListAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9528E72D26350D4F00852232 /* StackListAdapter.swift */; };
 		9528E73126350D4F00852232 /* StackListAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9528E72D26350D4F00852232 /* StackListAdapter.swift */; };
+		9528E74226354A8000852232 /* TextHeaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9528E74126354A8000852232 /* TextHeaderViewModel.swift */; };
+		9528E75226354A8700852232 /* TextHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9528E75126354A8700852232 /* TextHeaderView.swift */; };
+		9528E75B26354A8A00852232 /* TextHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9528E75A26354A8A00852232 /* TextHeaderView.xib */; };
+		9528E76526354CEB00852232 /* LineFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9528E76426354CEB00852232 /* LineFooterView.swift */; };
+		9528E77526354CF000852232 /* LineFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9528E77426354CF000852232 /* LineFooterView.xib */; };
+		9528E77E26354CF900852232 /* LineFooterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9528E77D26354CF900852232 /* LineFooterViewModel.swift */; };
 		956BBEFC2633F3C9008AC0A6 /* AppViewUtilits in Frameworks */ = {isa = PBXBuildFile; productRef = 956BBEFB2633F3C9008AC0A6 /* AppViewUtilits */; };
 		956BBF0D2633F3F5008AC0A6 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 956BBF0C2633F3F5008AC0A6 /* ViewController.xib */; };
 		956BBF262633F597008AC0A6 /* StackListViewProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956BBF162633F4F7008AC0A6 /* StackListViewProtocols.swift */; };
@@ -115,6 +121,12 @@
 		3D9C432D2274629C000A6585 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3D9C432F2274629C000A6585 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9528E72D26350D4F00852232 /* StackListAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackListAdapter.swift; sourceTree = "<group>"; };
+		9528E74126354A8000852232 /* TextHeaderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextHeaderViewModel.swift; sourceTree = "<group>"; };
+		9528E75126354A8700852232 /* TextHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextHeaderView.swift; sourceTree = "<group>"; };
+		9528E75A26354A8A00852232 /* TextHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextHeaderView.xib; sourceTree = "<group>"; };
+		9528E76426354CEB00852232 /* LineFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineFooterView.swift; sourceTree = "<group>"; };
+		9528E77426354CF000852232 /* LineFooterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LineFooterView.xib; sourceTree = "<group>"; };
+		9528E77D26354CF900852232 /* LineFooterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineFooterViewModel.swift; sourceTree = "<group>"; };
 		956BBF0C2633F3F5008AC0A6 /* ViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ViewController.xib; sourceTree = "<group>"; };
 		956BBF162633F4F7008AC0A6 /* StackListViewProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackListViewProtocols.swift; sourceTree = "<group>"; };
 		956BBF642633F891008AC0A6 /* FieldViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldViewModel.swift; sourceTree = "<group>"; };
@@ -270,6 +282,26 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		9528E74026354A6F00852232 /* TextHeader */ = {
+			isa = PBXGroup;
+			children = (
+				9528E74126354A8000852232 /* TextHeaderViewModel.swift */,
+				9528E75126354A8700852232 /* TextHeaderView.swift */,
+				9528E75A26354A8A00852232 /* TextHeaderView.xib */,
+			);
+			path = TextHeader;
+			sourceTree = "<group>";
+		};
+		9528E76326354CE000852232 /* LineFooter */ = {
+			isa = PBXGroup;
+			children = (
+				9528E76426354CEB00852232 /* LineFooterView.swift */,
+				9528E77426354CF000852232 /* LineFooterView.xib */,
+				9528E77D26354CF900852232 /* LineFooterViewModel.swift */,
+			);
+			path = LineFooter;
+			sourceTree = "<group>";
+		};
 		956BBF042633F3D2008AC0A6 /* StackListView */ = {
 			isa = PBXGroup;
 			children = (
@@ -292,6 +324,8 @@
 		956BBF382633F7B6008AC0A6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				9528E76326354CE000852232 /* LineFooter */,
+				9528E74026354A6F00852232 /* TextHeader */,
 				956BBF632633F889008AC0A6 /* FieldView */,
 			);
 			path = Views;
@@ -621,9 +655,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				3D9C432E2274629C000A6585 /* LaunchScreen.storyboard in Resources */,
+				9528E75B26354A8A00852232 /* TextHeaderView.xib in Resources */,
 				956BBF772633F897008AC0A6 /* FieldView.xib in Resources */,
 				956BBF0D2633F3F5008AC0A6 /* ViewController.xib in Resources */,
 				3D9C432B2274629C000A6585 /* Assets.xcassets in Resources */,
+				9528E77526354CF000852232 /* LineFooterView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -778,9 +814,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				3D9C43262274629B000A6585 /* ViewController.swift in Sources */,
+				9528E74226354A8000852232 /* TextHeaderViewModel.swift in Sources */,
+				9528E76526354CEB00852232 /* LineFooterView.swift in Sources */,
 				956BBF6E2633F894008AC0A6 /* FieldView.swift in Sources */,
 				3D9C43242274629B000A6585 /* AppDelegate.swift in Sources */,
+				9528E75226354A8700852232 /* TextHeaderView.swift in Sources */,
 				956BBF652633F891008AC0A6 /* FieldViewModel.swift in Sources */,
+				9528E77E26354CF900852232 /* LineFooterViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

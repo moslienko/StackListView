@@ -17,7 +17,7 @@ class ViewController: AppViewController {
     
     // MARK: Properties
     var stackContainer = StackListAdapter<StackSectionModel>(models: [])
-
+    
     lazy var contentView: StackListView = {
         let contentView = StackListView()
         contentView.stackView.alignment = .fill
@@ -25,7 +25,7 @@ class ViewController: AppViewController {
         contentView.stackView.axis = .vertical
         contentView.spacing = 16.0
         contentView.isCenterAligment = false
-                
+        
         contentView.stackView.layoutMargins = UIEdgeInsets(top: 16.0, left: 24.0, bottom: 16.0, right: 24.0)
         contentView.stackView.isLayoutMarginsRelativeArrangement = true
         contentView.scrollView.showsHorizontalScrollIndicator = false
@@ -50,6 +50,8 @@ class ViewController: AppViewController {
         
         for i in 0...2 {
             let section = StackSectionModel()
+            section.header = TextHeaderViewModel(title: "Section №\(i)", insets: UIEdgeInsets(top: 8.0, left: 0.0, bottom: 8.0, right: 0.0))
+            
             var rows: [AppViewModel] = []
             for j in 0...4 {
                 let model = FieldViewModel(value: "\(i) - \(j) = Hello!")
@@ -67,6 +69,11 @@ class ViewController: AppViewController {
                 }
                 rows += [model]
             }
+            
+            if i != 2 {
+                section.footer = LineFooterViewModel(insets: UIEdgeInsets(top: 8.0, left: 0.0, bottom: 8.0, right: 0.0))
+            }
+            
             section.rows += rows
             sections.append(section)
         }

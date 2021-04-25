@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17701"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="iN0-l3-epB" customClass="LineFooterView" customModule="Example" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="2"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6XB-5Q-3lm">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="2"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="2" id="bPl-t9-VRF"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="6XB-5Q-3lm" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="AF5-ZG-CxQ"/>
+                <constraint firstAttribute="trailing" secondItem="6XB-5Q-3lm" secondAttribute="trailing" id="Tjx-1L-wHz"/>
+                <constraint firstItem="6XB-5Q-3lm" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Uub-ll-KEx"/>
+                <constraint firstAttribute="bottom" secondItem="6XB-5Q-3lm" secondAttribute="bottom" id="WEr-FS-2W3"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="sepatarorView" destination="6XB-5Q-3lm" id="gfu-kQ-RH3"/>
+                <outlet property="viewBottomConstaint" destination="WEr-FS-2W3" id="eNe-MR-iZC"/>
+                <outlet property="viewLeftConstaint" destination="AF5-ZG-CxQ" id="a5b-za-JPN"/>
+                <outlet property="viewRightConstaint" destination="Tjx-1L-wHz" id="Sfa-Ya-R3z"/>
+                <outlet property="viewTopConstaint" destination="Uub-ll-KEx" id="uJ5-tw-jhe"/>
+            </connections>
+            <point key="canvasLocation" x="139" y="113"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
