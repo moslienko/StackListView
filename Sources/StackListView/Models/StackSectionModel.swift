@@ -18,12 +18,15 @@ public protocol StackSectionModelRepresentable {
 open class StackSectionModel: StackSectionModelRepresentable, Hashable {
     
     // MARK: - Props
+    public let id: Int
+    
     open var header: AppViewModel?
     open var rows: [AppViewModel]
     open var footer: AppViewModel?
     
     // MARK: - Initialization
     public init() {
+        self.id = Int(arc4random())
         self.rows = []
     }
 }
@@ -80,6 +83,12 @@ public extension Array where Element == StackSectionModel {
         return indexPath
     }
     
+    func getIndexPatch(for section: StackSectionModel) -> IndexPath? {
+        guard let sectionIndex = self.firstIndex(where: { $0.id == section.id }) else {
+            return nil
+        }
+        return IndexPath(item: 0, section: sectionIndex)
+    }
 }
 
 private extension Array where Element == AppViewModel {

@@ -35,8 +35,43 @@ public final class StackListAdapter<T: StackSectionModel>: StackSectionModel {
         return true
     }
     
+    @discardableResult
+    public func addModels(_ models: [AppViewModel], after model: AppViewModel, in stackView: StackListView) -> Bool {
+        guard var indexPath = self.getIndexPatch(for: model) else {
+            return false
+        }
+        indexPath.row += 1
+        self.models[indexPath.section].rows.insert(contentsOf: models, at:  indexPath.row)
+        
+        return stackView.addModels(models, after: indexPath)
+    }
+    
+    @discardableResult
+    public func updateViewVisible(for model: AppViewModel, isHidden: Bool, in stackView: StackListView) -> Bool {
+        guard let indexPath = self.getIndexPatch(for: model) else {
+            return false
+        }
+        return stackView.updateViewVisible(isHidden, index: indexPath)
+    }
+    
+    @discardableResult
+    public func updateSectionVisible(for section: StackSectionModel, isHidden: Bool, in stackView: StackListView) -> Bool {
+        guard let indexPath = self.getIndexPatch(for: section) else {
+            return false
+        }
+        return stackView.updateSectionVisible(isHidden, index: indexPath)
+    }
+    
     private func getIndexPatch(for model: AppViewModel) -> IndexPath? {
         guard let modelPresentable = model as? AppViewModelPresentable, let indexPath = (self.models as [StackSectionModel]).getIndexPatch(for: modelPresentable) else {
+            return nil
+        }
+        
+        return indexPath
+    }
+    
+    private func getIndexPatch(for section: StackSectionModel) -> IndexPath? {
+        guard let indexPath = (self.models as [StackSectionModel]).getIndexPatch(for: section) else {
             return nil
         }
         

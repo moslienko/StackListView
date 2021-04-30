@@ -95,22 +95,74 @@ public class StackListView: UIView {
         return false
     }
     
-    public func updateComponentModel(_ model: AppViewModel, in index: IndexPath) {
-        let sectionStacks: [UIStackView] = self.stackView.arrangedSubviews.filter({ $0 is UIStackView }) as? [UIStackView] ?? []
-        let sectionStack = sectionStacks[safe: index.section]
-        
-        let indexOffset = self.dataSource?.stackList(self, viewForHeaderInSection: index.section) == nil ? 0 : 1
-        guard let view = sectionStack?.arrangedSubviews[safe: index.row + indexOffset] as? AppView else { return }
+    @discardableResult
+    public func updateComponentModel(_ model: AppViewModel, in index: IndexPath) -> Bool {
+        guard let view = self.getView(index: index) else {
+            return false
+        }
         view.model = model
+        return true
     }
     
     public func removeComponentModel(in index: IndexPath) {
-        let sectionStacks: [UIStackView] = self.stackView.arrangedSubviews.filter({ $0 is UIStackView }) as? [UIStackView] ?? []
-        let sectionStack = sectionStacks[safe: index.section]
+        let sectionStack = self.getSectionView(index: index)
         
         let indexOffset = self.dataSource?.stackList(self, viewForHeaderInSection: index.section) == nil ? 0 : 1
         guard let view = sectionStack?.arrangedSubviews[safe: index.row + indexOffset] as? AppView else { return }
         view.removeFromSuperview()
+    }
+    
+    //MARK: Add model
+    @discardableResult
+    public func addModels(_ models: [AppViewModel], after index: IndexPath) -> Bool {
+        guard let sectionStack = self.getSectionView(index: index) else { return false }
+
+        let indexOffset = self.dataSource?.stackList(self, viewForHeaderInSection: index.section) == nil ? 0 : 1
+
+        models.enumerated().forEach({ (modelIndex, model) in
+            if let view = (model as? AppViewModelPresentable)?.presentable.view {
+                view.model = model
+                sectionStack.insertArrangedSubview(view, at: indexOffset + modelIndex + 1)
+            }
+        })
+
+        return true
+    }
+    
+    //MARK: Visible
+    @discardableResult
+    public func updateViewVisible(_ isHidden: Bool, index: IndexPath) -> Bool {
+        guard let view = self.getView(index: index) else {
+            return false
+        }
+        view.isHidden = isHidden
+        return true
+    }
+    
+    @discardableResult
+    public func updateSectionVisible(_ isHidden: Bool, index: IndexPath) -> Bool {
+        guard let view = self.getSectionView(index: index) else {
+            return false
+        }
+        view.isHidden = isHidden
+        return true
+    }
+    
+    //MARK: Utilits
+    private func getView(index: IndexPath) -> AppView? {
+        let sectionStack = self.getSectionView(index: index)
+        
+        let indexOffset = self.dataSource?.stackList(self, viewForHeaderInSection: index.section) == nil ? 0 : 1
+        let view = sectionStack?.arrangedSubviews[safe: index.row + indexOffset] as? AppView
+        
+        return view
+    }
+    
+    private func getSectionView(index: IndexPath) -> UIStackView? {
+        let sectionStacks: [UIStackView] = self.stackView.arrangedSubviews.filter({ $0 is UIStackView }) as? [UIStackView] ?? []
+        let sectionStack = sectionStacks[safe: index.section]
+        
+        return sectionStack
     }
     
     //MARK: UI

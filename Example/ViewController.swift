@@ -63,7 +63,30 @@ class ViewController: AppViewController {
                         self.contentView.reloadData()
                         
                         DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-                            self.stackContainer.removeModel(model, in: self.contentView)
+                            guard j == 0 else { return }
+                            let models = [FieldViewModel(value: "Test 1"), FieldViewModel(value: "Test 2"), FieldViewModel(value: "Test 3")]
+                            self.stackContainer.addModels(models, after: model, in: self.contentView)
+                            
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                                models.forEach({ self.stackContainer.updateViewVisible(for: $0, isHidden: true, in: self.contentView) })
+                                
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                                    models.forEach({ self.stackContainer.updateViewVisible(for: $0, isHidden: false, in: self.contentView) })
+                                }
+                            }
+                            
+                            
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                                if i == 1 {
+                                    self.stackContainer.updateSectionVisible(for: section, isHidden: true, in: self.contentView)
+                                }
+                                
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                                    if i == 1 {
+                                        self.stackContainer.updateSectionVisible(for: section, isHidden: false, in: self.contentView)
+                                    }
+                                }
+                            }
                         }
                     }
                 }
