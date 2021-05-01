@@ -46,6 +46,11 @@
 		956BBF902633FC8E008AC0A6 /* StackSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956BBF802633FC8B008AC0A6 /* StackSectionModel.swift */; };
 		956BBF982633FC8F008AC0A6 /* StackSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956BBF802633FC8B008AC0A6 /* StackSectionModel.swift */; };
 		956BBFA02633FC8F008AC0A6 /* StackSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956BBF802633FC8B008AC0A6 /* StackSectionModel.swift */; };
+		95C33A51263D54FF00348B47 /* Extension+Hashable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C33A50263D54FF00348B47 /* Extension+Hashable.swift */; };
+		95C33A5A263D551700348B47 /* Extension+Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C33A59263D551700348B47 /* Extension+Equatable.swift */; };
+		95C33A63263D553800348B47 /* Extension+AppViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C33A62263D553800348B47 /* Extension+AppViewModel.swift */; };
+		95C33A6C263D555600348B47 /* Extension+StackSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C33A6B263D555600348B47 /* Extension+StackSectionModel.swift */; };
+		95C33A75263D558200348B47 /* AppViewModelPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C33A74263D558200348B47 /* AppViewModelPresentable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -133,6 +138,11 @@
 		956BBF6D2633F894008AC0A6 /* FieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldView.swift; sourceTree = "<group>"; };
 		956BBF762633F897008AC0A6 /* FieldView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FieldView.xib; sourceTree = "<group>"; };
 		956BBF802633FC8B008AC0A6 /* StackSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackSectionModel.swift; sourceTree = "<group>"; };
+		95C33A50263D54FF00348B47 /* Extension+Hashable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Hashable.swift"; sourceTree = "<group>"; };
+		95C33A59263D551700348B47 /* Extension+Equatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Equatable.swift"; sourceTree = "<group>"; };
+		95C33A62263D553800348B47 /* Extension+AppViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+AppViewModel.swift"; sourceTree = "<group>"; };
+		95C33A6B263D555600348B47 /* Extension+StackSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+StackSectionModel.swift"; sourceTree = "<group>"; };
+		95C33A74263D558200348B47 /* AppViewModelPresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppViewModelPresentable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -305,6 +315,7 @@
 		956BBF042633F3D2008AC0A6 /* StackListView */ = {
 			isa = PBXGroup;
 			children = (
+				95C33A4F263D54F000348B47 /* Extensions */,
 				956BBF7F2633FC69008AC0A6 /* Models */,
 				956BBF152633F4E9008AC0A6 /* Protocols */,
 				3D9C42A122745900000A6585 /* StackListView.swift */,
@@ -345,8 +356,20 @@
 			isa = PBXGroup;
 			children = (
 				956BBF802633FC8B008AC0A6 /* StackSectionModel.swift */,
+				95C33A74263D558200348B47 /* AppViewModelPresentable.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		95C33A4F263D54F000348B47 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				95C33A50263D54FF00348B47 /* Extension+Hashable.swift */,
+				95C33A59263D551700348B47 /* Extension+Equatable.swift */,
+				95C33A62263D553800348B47 /* Extension+AppViewModel.swift */,
+				95C33A6B263D555600348B47 /* Extension+StackSectionModel.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -745,10 +768,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				95C33A6C263D555600348B47 /* Extension+StackSectionModel.swift in Sources */,
 				9528E72E26350D4F00852232 /* StackListAdapter.swift in Sources */,
+				95C33A75263D558200348B47 /* AppViewModelPresentable.swift in Sources */,
 				3D9C42A222745900000A6585 /* StackListView.swift in Sources */,
 				956BBF302633F599008AC0A6 /* StackListViewProtocols.swift in Sources */,
 				956BBF812633FC8B008AC0A6 /* StackSectionModel.swift in Sources */,
+				95C33A5A263D551700348B47 /* Extension+Equatable.swift in Sources */,
+				95C33A51263D54FF00348B47 /* Extension+Hashable.swift in Sources */,
+				95C33A63263D553800348B47 /* Extension+AppViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

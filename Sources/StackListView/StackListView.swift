@@ -251,9 +251,7 @@ extension StackListView: UIScrollViewDelegate {
     
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
         for view in self.stackView.arrangedSubviews {
-            if scrollView.contentOffset.y > view.frame.origin.y + view.frame.size.height {
-                //print("remove view - \(view)")
-            }
+            if scrollView.contentOffset.y > view.frame.origin.y + view.frame.size.height { }
         }
     }
     
