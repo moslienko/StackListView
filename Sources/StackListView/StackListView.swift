@@ -12,7 +12,7 @@ import AppViewUtilits
 import UIKit
 
 @IBDesignable
-public class StackListView: UIView {
+public class StackListView: UIView, StackListViewDelegate {
     
     fileprivate var didSetupConstraints = false
     @IBInspectable open var spacing: CGFloat = 8
@@ -39,6 +39,7 @@ public class StackListView: UIView {
     weak public var dataSource: StackListViewDataSource?
     
     //MARK: View life cycle
+    
     override public func didMoveToSuperview() {
         super.didMoveToSuperview()
         
@@ -86,6 +87,7 @@ public class StackListView: UIView {
     }
     
     //MARK: Update model
+    
     @discardableResult
     public func updateModel(_ model: AppViewModel) -> Bool {
         if let modelPresentable = model as? AppViewModelPresentable, let indexPath = (self.dataSource as? StackListAdapter)?.models.getIndexPatch(for: modelPresentable) {
@@ -104,6 +106,7 @@ public class StackListView: UIView {
         return true
     }
     
+    
     public func removeComponentModel(in index: IndexPath) {
         let sectionStack = self.getSectionView(index: index)
         
@@ -113,23 +116,25 @@ public class StackListView: UIView {
     }
     
     //MARK: Add model
+    
     @discardableResult
     public func addModels(_ models: [AppViewModel], after index: IndexPath) -> Bool {
         guard let sectionStack = self.getSectionView(index: index) else { return false }
-
+        
         let indexOffset = self.dataSource?.stackList(self, viewForHeaderInSection: index.section) == nil ? 0 : 1
-
+        
         models.enumerated().forEach({ (modelIndex, model) in
             if let view = (model as? AppViewModelPresentable)?.presentable.view {
                 view.model = model
                 sectionStack.insertArrangedSubview(view, at: indexOffset + modelIndex + 1)
             }
         })
-
+        
         return true
     }
     
     //MARK: Visible
+    
     @discardableResult
     public func updateViewVisible(_ isHidden: Bool, index: IndexPath) -> Bool {
         guard let view = self.getView(index: index) else {
@@ -138,6 +143,7 @@ public class StackListView: UIView {
         view.isHidden = isHidden
         return true
     }
+    
     
     @discardableResult
     public func updateSectionVisible(_ isHidden: Bool, index: IndexPath) -> Bool {
@@ -149,6 +155,7 @@ public class StackListView: UIView {
     }
     
     //MARK: Utilits
+    
     private func getView(index: IndexPath) -> AppView? {
         let sectionStack = self.getSectionView(index: index)
         

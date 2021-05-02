@@ -21,4 +21,17 @@ public protocol StackListViewDataSource: AnyObject {
     func stackList(in view: StackListView, modelForFooterInSection section: Int) -> AppViewModel?
 }
 
-public protocol StackListViewDelegate {}
+public protocol StackListViewDelegate: AnyObject {
+    func reloadData()
+    @discardableResult
+    func updateModel(_ model: AppViewModel) -> Bool
+    @discardableResult
+    func updateComponentModel(_ model: AppViewModel, in index: IndexPath) -> Bool
+    func removeComponentModel(in index: IndexPath)
+    @discardableResult
+    func addModels(_ models: [AppViewModel], after index: IndexPath) -> Bool
+    @discardableResult
+    func updateViewVisible(_ isHidden: Bool, index: IndexPath) -> Bool
+    @discardableResult
+    func updateSectionVisible(_ isHidden: Bool, index: IndexPath) -> Bool
+}
