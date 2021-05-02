@@ -16,7 +16,7 @@
 <p align="center">
 Library to build a user interface based on the scrolled UIStack view's.
 Please note that the reusable view is not used (such as in the UITableView), so the library is not recommended to use for large lists.
-The library requires a dependency [AppViewUtilits](https://github.com/moslienko/AppViewUtilits)
+The library requires a dependency [AppViewUtilits](https://github.com/moslienko/AppViewUtilits/).
 </p>
 
 ## Example
