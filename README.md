@@ -1,5 +1,5 @@
 <p align="center">
-   <img width="200" src="https://raw.githubusercontent.com/SvenTiigi/SwiftKit/gh-pages/readMeAssets/SwiftKitLogo.png" alt="StackListView Logo">
+   <img width="200" src="https://moslienko.github.io/Assets/StackListView/sdk.png" alt="StackListView Logo">
 </p>
 
 <p align="center">
