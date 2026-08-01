@@ -20,7 +20,7 @@ let package = Package(
         .target(
             name: "StackListView",
             dependencies: [
-                .package(url: "https://github.com/moslienko/AppViewUtilits.git", from: "1.2.1")
+                .product(name: "AppViewUtilits", package: "AppViewUtilits")
             ],
             path: "Sources"
         ),
